@@ -17,22 +17,22 @@ func isPalindrom(num int) bool {
 func main() {
     var t int
     fmt.Scan(&t)
-    for c := 0; c < t; c++ {
+    for i := 0; i < t; i++ {
         var n, prod int
         fmt.Scan(&n)
+        largest_prime := -1
 
-        largestPrime := -1
-        for i := 990; i > 99; i-=11 {
-            for j := 999; j > 99; j-- {
-                prod = i * j
-                if prod > largestPrime && isPalindrom(prod) && prod < n {
-                    largestPrime = prod
+        for j := 990; j <= 100; j-=11 {
+            for k := 999; k <= 100; k-- {
+                prod = j * k
+                if prod > largest_prime && isPalindrom(prod) && prod < n {
+                    largest_prime = prod
                     break
-                } else if prod < largestPrime {
+                } else if prod < largest_prime {
                     break
                 }
             }
         }
-        fmt.Println(largestPrime)
+        fmt.Println(largest_prime)
     }
 }

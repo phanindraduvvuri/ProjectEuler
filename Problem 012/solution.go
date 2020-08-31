@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"math"
-	// "time"
 )
 
 func sqrt(num int) float64 {
@@ -15,12 +14,12 @@ func sqrt(num int) float64 {
 func divisors(num int) int {
 	var numOfDivisor = 0
 	for i := 1; i <= int(math.Ceil(sqrt(num))); i++ {
-		if num % i == 0 {
+		if num%i == 0 {
 			numOfDivisor += 2
 		}
 
-		if i * i == num {
-		numOfDivisor -= 1
+		if i*i == num {
+			numOfDivisor -= 1
 		}
 	}
 
@@ -29,18 +28,19 @@ func divisors(num int) int {
 
 func main() {
 	// start := time.Now()
-	var nthTriangle, cnt int
+	var nthTriangle, cnt, N int
+	fmt.Scan(&N)
 
-	for num := 1; ;num++ {
+	for num := 1; ; num++ {
 		nthTriangle = (num * (num + 1)) / 2
 
-		if num % 2 == 0 {
-			cnt = divisors(num / 2) * divisors(num + 1)
+		if num%2 == 0 {
+			cnt = divisors(num/2) * divisors(num+1)
 		} else {
-			cnt = divisors(num) * divisors((num + 1) / 2)
+			cnt = divisors(num) * divisors((num+1)/2)
 		}
 
-		if cnt >= 500 {
+		if cnt >= N {
 			fmt.Println(nthTriangle)
 			break
 		}
